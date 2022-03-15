@@ -4,38 +4,35 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class p1Solution {
-    static int N;
-    static int[] result;
 
     public static void main(String[] args) {
+    	// code I referred to solve p1
+    	// logic source : https://wikidocs.net/124671
+    	
         Scanner sc=new Scanner(System.in);
-        //1. º¯¼ö ¼±¾ğ ¹× ÃÊ±âÈ­
-        N=sc.nextInt();     //ÁÖ»çÀ§ÀÇ °³¼ö
-        result=new int[N];  //°á°ú°ªÀ» ÀúÀåÇÒ ¹è¿­
-        int diceNum=0;      //0~(N-1)¹ø ÁÖ»çÀ§¸¦ ÀÇ¹Ì
+        //1. ë³€ìˆ˜ ì„ ì–¸ ë° ì´ˆê¸°í™”
+        int dice = sc.nextInt();     //ì£¼ì‚¬ìœ„ì˜ ê°œìˆ˜
+        int[] result = new int [dice];  //ê²°ê³¼ê°’ì„ ì €ì¥í•  ë°°ì—´
+        int n = 0;      //0~(N-1)ë²ˆ ì£¼ì‚¬ìœ„ë¥¼ ì˜ë¯¸
 
-        //2. Àç±ÍÇÔ¼ö È£Ãâ
-        roll(diceNum);
+        //2. ì¬ê·€í•¨ìˆ˜ í˜¸ì¶œ
+        roll(n, dice, result);
 
     }
-
-    private static void roll(int diceNum) {
-        //3. Å»ÃâÁ¶°Ç
-        if(diceNum==N) {        //N¹øÂ° ÁÖ»çÀ§¿¡ °ªÀ» ³Ö¾úÀ¸¸é
-            System.out.println(Arrays.toString(result));
-            return;             //print ÈÄ ¸Ş¼­µå Á¾·á
-        }else{
-            //4. °æ·Î Å½»ö
-            for(int i=1;i<=6;i++) { //i¿¡ 1~6±îÁö ÇØ´ç °ªÀ» ºÎ¿©
-                //4.1 °ª ¹Ù²Ù±â
-                result[diceNum]=i;  //n¹ø ÁÖ»çÀ§¿¡ iÀÇ °ªÀ» ºÎ¿©
-                diceNum=diceNum+1;  //n+1¹ø ÁÖ»çÀ§·Î ³Ñ¾î°¨
-                //4.2 Àç±ÍÈ£Ãâ
-                roll(diceNum);      //n+1¹ø ÁÖ»çÀ§¿¡ ´ëÇÏ¿© Àç±ÍÈ£Ãâ
-                //4.3 °ª ¿øº¹
-                diceNum=diceNum-1;  //´Ù½Ã n¹ø ÁÖ»çÀ§·Î º¹±Í
-                result[diceNum]=0;  //Åğ°¢ °Ë»öÀ» À§ÇØ ±âÁ¸°ªÀ¸·Î º¹¿ø
-            }
-        }
+    
+    public static void roll (int n, int dice, int[] result) {
+    	if (n == dice) {
+    	} else {
+        	
+        	for (int i = 1; i <= 6; i++) {
+        		result[n] = i;
+        		n = n + 1;
+        		roll(n, dice, result);
+        		n = n - 1;
+        	}
+    	}
+    	
     }
+
+
 }
